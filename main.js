@@ -18,6 +18,5 @@ chrome.app.runtime.onLaunched.addListener(function() {
             width: 800,
             top: 100
         },
-        frame: 'none'
     });
 });
