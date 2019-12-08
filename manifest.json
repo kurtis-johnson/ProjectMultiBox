@@ -1,0 +1,14 @@
+{
+  "name": "ProjectMultiBox",
+  "version": "1.0",
+  "description": "",
+  "app": {
+    "background": {
+      "scripts": [
+        "main.js"
+      ]
+    }
+  },
+  "manifest_version": 2,
+  "author": "Kurtis Johnson"
+}
