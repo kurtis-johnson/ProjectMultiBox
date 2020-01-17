@@ -1,22 +1,30 @@
-/**
- * Copyright (c) 2012 The Chromium Authors. All rights reserved.
- * Use of this source code is governed by a BSD-style license that can be
- * found in the LICENSE file.
- **/
+// var onAccessApproved = async function(streamId, options) {
+//     console.log(streamId, options);
+//     try {
+//         var constraints = {
+//             audio: true,
+//             video: true,
+//             chromeMediaSourceId: streamId
+//         };
+//
+//         const stream = await navigator.mediaDevices.getUserMedia(constraints);
+//         console.log(stream);
+//     }catch(error) {
+//         console.log(error);
+//     }
+// };
 
+chrome.runtime.onMessage.addListener(function (msg, sender, callback) {
+   if(msg === 'capture') {
+        var screenOptions = ['screen', 'window', 'audio', 'tab'];
+        chrome.desktopCapture.chooseDesktopMedia(screenOptions, null, function(streamId, options) {
+            callback({sourceId: streamId});
+            return false;
+        });
+        return true;
+   }
+});
 
-/**
- * Listens for the app launching then creates the window
- *
- * @see http://developer.chrome.com/apps/app.window.html
- */
-chrome.app.runtime.onLaunched.addListener(function() {
-    chrome.app.window.create('index.html', {
-        id: "multiboxId",
-        innerBounds: {
-            height: 550,
-            width: 800,
-            top: 100
-        },
-    });
+chrome.runtime.onStartup.addListener(function (args) {
+    console.log(args);
 });

@@ -2,13 +2,18 @@
   "name": "ProjectMultiBox",
   "version": "1.0",
   "description": "",
-  "app": {
-    "background": {
-      "scripts": [
-        "main.js"
-      ]
-    }
+  "background": {
+    "scripts": [
+      "main.js"
+    ]
   },
+  "browser_action": {
+    "default_title": "ProjectMultiBox",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "tabCapture", "activeTab", "storage", "debugger", "desktopCapture", "pageCapture", "tabs"
+  ],
   "manifest_version": 2,
   "author": "Kurtis Johnson"
 }
