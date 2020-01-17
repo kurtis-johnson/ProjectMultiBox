@@ -1,0 +1,37 @@
+plugins {
+    id "com.moowork.node" version "1.2.0"
+}
+
+apply plugin: 'base'
+apply plugin: 'com.moowork.node'
+
+node {
+    version = '10.15.2'
+    yarnVersion = '1.13.0'
+    download = true
+    // Set the work directory for unpacking node
+    workDir = file("${project.buildDir}/nodejs")
+    // Set the work directory for Yarn
+    yarnWorkDir = file("${project.buildDir}/yarn")
+    // Set the work directory where node_modules should be located
+    nodeModulesDir = file("${project.projectDir}/multibox-typescript")
+}
+
+task buildChromeExtension(type: YarnTask) {
+    outputs.dir("$buildDir/web-compiled/dist")
+    doFirst {
+        args = ['build']
+    }
+    doLast {
+        copy {
+            from(file("${project.projectDir}/multibox-typescript/build"))
+            into("$buildDir/web-compiled/dist/")
+        }
+
+        copy {
+            from(file("${project.projectDir}/multibox-chrome-ext"))
+            into("$buildDir/web-compiled/dist/")
+        }
+    }
+}
+
