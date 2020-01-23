@@ -18,7 +18,9 @@ node {
 }
 
 task buildChromeExtension(type: YarnTask) {
+    delete "$buildDir/web-compiled/dist"
     outputs.dir("$buildDir/web-compiled/dist")
+
     doFirst {
         args = ['build']
     }
