@@ -2,7 +2,10 @@
 *.DS_store
 /build/
 /.gradle/
+/.idea/
 gradlew
 gradlew.bat
 gradle/wrapper/gradle-wrapper.jar
 gradle/wrapper/gradle-wrapper.properties
+yarn.lock
+node_modules
