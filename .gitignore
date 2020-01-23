@@ -2,3 +2,7 @@
 *.DS_store
 /build/
 /.gradle/
+gradlew
+gradlew.bat
+gradle/wrapper/gradle-wrapper.jar
+gradle/wrapper/gradle-wrapper.properties
