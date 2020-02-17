@@ -6,21 +6,19 @@ declare const chrome: any;
 
 const App: React.FC = () => {
     const captureStream = () => {
-
-        chrome.runtime.sendMessage(chrome.runtime.getManifest().id, 'capture', {}, async (args: any) => {
-            let stream;
-
-            const constraints = {
-                audio: true,
-                video: true,
-                chromeMediaSourceId: args.sourceId
-            };
-
-            stream = await navigator.mediaDevices.getUserMedia(constraints);
-
-            const video = document.getElementById('screen-view');
-            // @ts-ignore
-            video.src = URL.createObjectURL(stream);
+        // @ts-ignore
+        navigator.mediaDevices.getDisplayMedia({
+            audio: true,
+            video: true
+        }).then((stream: any) => {
+            console.log(stream);
+            const video = document.getElementById('display_output');
+            if(video != null) {
+                // @ts-ignore
+                video.srcObject = stream;
+            }
+        }).catch((error: any) => {
+            console.log(error);
         });
     };
 
@@ -28,7 +26,11 @@ const App: React.FC = () => {
         <div className="App">
             <header className="App-header">
                 <img src={logo} className="App-logo" alt="logo"/>
-                <video id={"display_output"}></video>
+                <video style={{
+                    border: '1px',
+                    width: '98%',
+                    maxWidth: '860px'
+                }} id={"display_output"} autoPlay={true} controls={true}></video>
                 <button onClick={captureStream}>Capture Stream</button>
             </header>
         </div>
