@@ -25,13 +25,12 @@ const App: React.FC = () => {
     return (
         <div className="App">
             <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo"/>
                 <video style={{
                     border: '1px',
                     width: '98%',
                     maxWidth: '860px'
                 }} id={"display_output"} autoPlay={true} controls={true}></video>
-                <button onClick={captureStream}>Capture Stream</button>
+                <button className="slds-button slds-button_destructive capture_button" onClick={captureStream}>Capture Stream</button>
             </header>
         </div>
     );
