@@ -26,34 +26,35 @@ const App: React.FC = () => {
         });
     };
 
+    const getVideoColumns = (numStreams: number) => {
+        const videoCols = [];
+        for(let x = 0;x <= numStreams;x++) {
+            videoCols.push((
+                <div className={"slds-col"}>
+                    <video
+                        style={{
+                            border: '1px',
+                            width: '98%',
+                            maxWidth: '860px'
+                        }}
+                        id={"display_output_" + x}
+                        autoPlay={true}
+                        controls={true}
+                    />
+                </div>
+            ));
+        }
+
+        return videoCols;
+    };
+
     return (
         <div className="App">
             <header className="App-header">
                 <div className={"slds-gutters slds-grid"}>
-                    <div className={"slds-col"}>
-                        <video
-                            style={{
-                                border: '1px',
-                                width: '98%',
-                                maxWidth: '860px'
-                            }}
-                            id={"display_output_0"}
-                            autoPlay={true}
-                            controls={true}
-                        />
-                    </div>
-                    <div className={"slds-col"}>
-                        <video
-                            style={{
-                                border: '1px',
-                                width: '98%',
-                                maxWidth: '860px'
-                            }}
-                            id={"display_output_1"}
-                            autoPlay={true}
-                            controls={true}
-                        />
-                    </div>
+                    {
+                        getVideoColumns(numStreams)
+                    }
                 </div>
                 <button className="slds-button slds-button_destructive capture_button" onClick={captureStream}>Capture Stream</button>
             </header>
