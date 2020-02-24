@@ -40,6 +40,7 @@ const App: React.FC = () => {
                         id={"display_output_" + x}
                         autoPlay={true}
                         controls={true}
+                        className={x == numStreams ? 'capture_video_max' : 'capture_video'}
                     />
                 </div>
             ));
