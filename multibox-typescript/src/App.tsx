@@ -6,11 +6,12 @@ declare const chrome: any;
 
 const App: React.FC = () => {
     const captureStream = () => {
-        // @ts-ignore
-        navigator.mediaDevices.getDisplayMedia({
+        let gdmConst = {
             audio: true,
             video: true
-        }).then((stream: any) => {
+        };
+        // @ts-ignore
+        navigator.mediaDevices.getDisplayMedia(gdmConst).then((stream: any) => {
             console.log(stream);
             const video = document.getElementById('display_output');
             if(video != null) {
@@ -23,13 +24,15 @@ const App: React.FC = () => {
     };
 
     return (
-        <div className="App">
+        <div className="App slds-gutters">
             <header className="App-header">
-                <video style={{
-                    border: '1px',
-                    width: '98%',
-                    maxWidth: '860px'
-                }} id={"display_output"} autoPlay={true} controls={true}></video>
+                <div className={"slds-col slds-container_left"}>
+                    <video style={{
+                        border: '1px',
+                        width: '98%',
+                        maxWidth: '860px'
+                    }} id={"display_output"} autoPlay={true} controls={true}></video>
+                </div>
                 <button className="slds-button slds-button_destructive capture_button" onClick={captureStream}>Capture Stream</button>
             </header>
         </div>

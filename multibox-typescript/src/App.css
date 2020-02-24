@@ -14,7 +14,8 @@
 }
 
 .capture_button {
-  padding: 15px;
+  padding: 8px;
+  position: absolute;
 }
 
 /*.button {
