@@ -17,7 +17,7 @@ node {
     nodeModulesDir = file("${project.projectDir}/multibox-typescript")
 }
 
-task buildChromeExtension(type: YarnTask) {
+task buildApp(type: YarnTask) {
     delete "$buildDir/web-compiled/dist"
     outputs.dir("$buildDir/web-compiled/dist")
 
