@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 declare const chrome: any;
@@ -50,15 +49,28 @@ const App: React.FC = () => {
     };
 
     return (
-        <div className="App">
-            <header className="App-header">
+        <div>
+            <body className="App-body">
                 <div className={"slds-gutters slds-grid"}>
-                    {
-                        getVideoColumns(numStreams)
-                    }
+                    <div className="slds-col slds-col slds-size_1-of-8">
+                        <nav className="demo-only slds-nav-vertical">
+                            <div className="slds-nav-vertical__section">
+                                <h2 id="entity-header" className="slds-nav-vertical__title nav-header slds-border_bottom">MultiBox</h2>
+                                <ul aria-describedby="entity-header">
+                                    <div>
+                                        <button className="slds-button slds-button_success capture_button" onClick={captureStream}>Capture Stream</button>
+                                    </div>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                    <div className={"nav-panel slds-gutters slds-grid slds-col slds-size_7-of-8"}>
+                        {
+                            getVideoColumns(numStreams)
+                        }
+                    </div>
                 </div>
-                <button className="slds-button slds-button_destructive capture_button" onClick={captureStream}>Capture Stream</button>
-            </header>
+            </body>
         </div>
     );
 }
