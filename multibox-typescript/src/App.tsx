@@ -1,6 +1,6 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {slide as Menu} from "react-burger-menu";
 
 declare const chrome: any;
 
@@ -16,7 +16,7 @@ const App: React.FC = () => {
         navigator.mediaDevices.getDisplayMedia(gdmConst).then((stream: any) => {
             console.log(stream);
             const video = document.getElementById('display_output_' + numStreams);
-            if(video != null) {
+            if (video != null) {
                 // @ts-ignore
                 video.srcObject = stream;
                 setNumStreams(numStreams + 1);
@@ -28,7 +28,7 @@ const App: React.FC = () => {
 
     const getVideoColumns = (numStreams: number) => {
         const videoCols = [];
-        for(let x = 0;x <= numStreams;x++) {
+        for (let x = 0; x <= numStreams; x++) {
             videoCols.push((
                 <div className={"slds-col"}>
                     <video
@@ -51,13 +51,17 @@ const App: React.FC = () => {
 
     return (
         <div className="App">
+            <Menu>
+                <button className="capture_button"
+                        onClick={captureStream}>Capture Stream
+                </button>
+            </Menu>
             <header className="App-header">
                 <div className={"slds-gutters slds-grid"}>
                     {
                         getVideoColumns(numStreams)
                     }
                 </div>
-                <button className="slds-button slds-button_destructive capture_button" onClick={captureStream}>Capture Stream</button>
             </header>
         </div>
     );
