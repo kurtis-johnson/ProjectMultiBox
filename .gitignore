@@ -1,5 +1,6 @@
 *.iml
 *.DS_store
+*.code-workspace
 /build/
 /.gradle/
 /.idea/
