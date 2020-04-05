@@ -1,9 +1,9 @@
 plugins {
-    id "com.moowork.node" version "1.2.0"
+  id "com.github.node-gradle.node" version "1.5.3"
 }
 
 apply plugin: 'base'
-apply plugin: 'com.moowork.node'
+apply plugin: 'com.github.node-gradle.node'
 
 node {
     version = '10.15.2'
